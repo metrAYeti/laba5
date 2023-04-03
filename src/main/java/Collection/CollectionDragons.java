@@ -17,40 +17,53 @@ public class CollectionDragons {
     }
 
     private static Deque<Dragon> dragons;
+    private LocalDateTime lastInitTime;
+    private LocalDateTime lastSaveTime;
+    private FileManager fileManager;
 
-    static {
-        try {
-            dragons = CollectionDragons.fileReader();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public CollectionDragons(FileManager fileManagerReader){
+        dragons = fileManagerReader.readCollection();
+        lastInitTime = LocalDateTime.now();
     }
 
-    public static ArrayDeque<Dragon> fileReader() throws IOException {
-        Gson gson = new Gson();
-        boolean flag = true;
-        File collection = new File("collection.json");
-        if (collection.canRead()) {
-
-            Reader reader = Files.newBufferedReader(Paths.get(String.valueOf(collection)));
-
-            // convert JSON array to list of dragons
-            List<Dragon> dragonsFromFile = Arrays.asList(gson.fromJson(reader, Dragon[].class));
-            ArrayDeque<Dragon> dragons = new ArrayDeque<>(dragonsFromFile);
-
-            // close reader
-            reader.close();
-            ArrayList<Long> arrayList = new ArrayList<>();
-            for (Dragon dragon : dragons) {
-                arrayList.add(dragon.getId());
-            }
-            Dragon.setArrayList(arrayList);
-            return dragons;
-        }
-        else{
-            return null;
-        }
+    public void saveCollection() {
+        fileManager.writeCollection(dragons);
+        lastSaveTime = LocalDateTime.now();
     }
+
+//    static {
+//        try {
+//            dragons = CollectionDragons.fileReader();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    public static ArrayDeque<Dragon> fileReader() throws IOException {
+//        Gson gson = new Gson();
+//        boolean flag = true;
+//        File collection = new File("collection.json");
+//        if (collection.canRead()) {
+//
+//            Reader reader = Files.newBufferedReader(Paths.get(String.valueOf(collection)));
+//
+//            // convert JSON array to list of dragons
+//            List<Dragon> dragonsFromFile = Arrays.asList(gson.fromJson(reader, Dragon[].class));
+//            ArrayDeque<Dragon> dragons = new ArrayDeque<>(dragonsFromFile);
+//
+//            // close reader
+//            reader.close();
+//            ArrayList<Long> arrayList = new ArrayList<>();
+//            for (Dragon dragon : dragons) {
+//                arrayList.add(dragon.getId());
+//            }
+//            Dragon.setArrayList(arrayList);
+//            return dragons;
+//        }
+//        else{
+//            return null;
+//        }
+//    }
 
     // create a reader
 

@@ -1,7 +1,9 @@
 package commands;
 
 import Collection.CollectionDragons;
-import Collection.FileSaving;
+import Collection.FileManager;
+
+import data.Dragon;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -73,7 +75,7 @@ public class CommandProcessing {
                     System.out.print("enter command: ");
                 }
                 case "save" -> {
-                    new FileSaving().fileSaving();
+                    new FileManager("lab5").writeCollection(CollectionDragons.getDragons());
                     System.out.print("enter command: ");
                 }
                 case "exit" -> {
