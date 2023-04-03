@@ -1,7 +1,8 @@
 package commands;
 
 import Collection.CollectionDragons;
-import Collection.FileSaving;
+import Collection.FileManager;
+
 
 import java.io.*;
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class ScriptCommand {
                 case "add_element" -> CollectionDragons.getDragons().add(new AddElement().adder());
                 case "execute_script" -> new ScriptCommand().executeScript(ScriptCommand.scriptProcessing());
                 case "add_if_max" -> new AddIfMax().adderIfMax();
-                case "save" -> new FileSaving().fileSaving();
+                case "save" -> new FileManager("lab5").writeCollection(CollectionDragons.getDragons());
                 case "exit" -> {
                     System.out.println("До свидания");
                     System.exit(0);
