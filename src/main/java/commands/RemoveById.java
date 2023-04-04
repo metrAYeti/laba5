@@ -1,30 +1,62 @@
 package commands;
 
 import Collection.CollectionDragons;
+import Collection.Console;
 import data.Dragon;
+import exception.WrongAmountCommandsException;
 
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Scanner;
 
-public class RemoveById {
-    public void remove_by_id() {
+public class RemoveById implements Command{
+    private CollectionDragons collectionDragons;
 
-        System.out.println("Введите id:");
-        Scanner scanner = new Scanner(System.in);
-        Long id = scanner.nextLong();
+    public RemoveById( ){}
+    public RemoveById(CollectionDragons dragon){
+        this.collectionDragons = dragon;
+    }
 
-        Iterator<Dragon> i = CollectionDragons.getDragons().iterator();
-        boolean flag = false;
-        while (i.hasNext()) {
-            if (id.equals(i.next().getId())) {
-                i.remove();
-                flag = true;
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public String getDescription() {
+        return null;
+    }
+
+    @Override
+    public void execute(String argument) {
+        try {
+            if(collectionDragons.getCollectionSize()!=0) {
+                Long id = Long.parseLong(argument);
+                if(id>0) {
+                    if (collectionDragons.getById(id) == null) throw new WrongAmountCommandsException();
+                    Iterator<Dragon> iter = collectionDragons.getIterator();
+                    int i = 0;
+                    while (iter.hasNext()) {
+                        if (Objects.equals(iter.next().getId(), id)) {
+                            iter.remove();
+                            i += 1;
+                            Console.println("Element deleted successfully");
+                        }
+                    }
+                    if (i != 1) {
+                        Console.println("This id is not in the collection");
+                    }
+                }else{
+                    Console.println("id must be greater than 0");
+                }
+            }else{
+                Console.println("There are no elements in the collection");
             }
+        } catch (NumberFormatException ex) {
+            Console.println("id must be represented by a number, enter the correct value");
+        } catch (WrongAmountCommandsException ex) {
+            Console.println("organization with this id was not found");
         }
-        if (flag) {
-            System.out.println("Объект успешно удалён");
-        } else {
-            System.out.println("Такого объекта нет");
-        }
+
     }
 }

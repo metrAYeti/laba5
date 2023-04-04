@@ -1,44 +1,55 @@
 package commands;
 
 import Collection.CollectionDragons;
+import Collection.Console;
 import data.Dragon;
+import exception.WrongAmountCommandsException;
 
 import java.util.*;
 
-public class UpdateCommand {
-    public void update() {
+public class UpdateCommand implements Command {
+    private CollectionDragons collectionDragons;
+    public UpdateCommand(){}
+    public UpdateCommand(CollectionDragons dragon) {
+        this.collectionDragons = dragon;
+    }
 
-        Deque<Dragon> copy = CollectionDragons.getDragons();
-        System.out.println("Введите id:");
-        Scanner scanner = new Scanner(System.in);
-        Long id = scanner.nextLong();
-        int k =0;
-        List<Dragon> dragons = new ArrayList<>(CollectionDragons.getDragons());
-        for (Dragon dragon : dragons) {
-            if (dragon.getId().equals(id)) {
-                dragon.setId(Dragon.generate_id());
-                k = k + 1;
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public String getDescription() {
+        return null;
+    }
+
+    @Override
+    public void execute(String argument) {
+
+        try {
+            Iterator<Dragon> iter = collectionDragons.getIterator();
+            if (collectionDragons.getCollectionSize() != 0) {
+                Long id = Long.parseLong(argument);
+                if(id>0) {
+                    if (collectionDragons.getById(id) == null) throw new WrongAmountCommandsException();
+                    while (iter.hasNext()) {
+                        Dragon i = iter.next();
+                        if (Objects.equals(i.getId(), id)) {
+                            i.setId(collectionDragons.generate_id());
+                            Console.println("element id updated successfully");
+                        }
+                    }
+                }else{
+                    Console.println("id must be greater than 0");
+                }
+            } else {
+                Console.println("There are no items in the collection");
             }
+        }catch(NumberFormatException ex){
+            Console.println("id must be represented by a number, enter the correct value");
+        }catch(WrongAmountCommandsException ex){
+            Console.println("organization with this id was not found");
         }
-        if (k == 0) System.out.println("Элемента с таким id нет");
-
-       /* Iterator<Dragon> i = CollectionDragons.getDragons().iterator();
-        boolean flag = false;
-        while (i.hasNext()) {
-            if (id == i.next().getId()) {
-                System.out.println("Введите новый id");
-                Dragon dragon = i;
-                dragon.setId(scanner.nextLong());
-                flag = true;
-            }
-        }
-        if (flag){
-            System.out.println("Объект успешно обновлен");
-        }
-        else {
-            System.out.println("Такого объекта нет");
-        }*/
-
-
     }
 }

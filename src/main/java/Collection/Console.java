@@ -4,13 +4,13 @@ package Collection;
 import java.util.Scanner;
 
 public class Console {
-    private Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
     public Long readLong() {
 
         return scanner.nextLong();
     }
-    public String readString(){
+    public static String readString(){
         if(!ifScannerHasNext()) {
             exit();
         }
@@ -28,7 +28,7 @@ public class Console {
         }
         return scanner.nextInt();
     }
-    public boolean ifScannerHasNext(){
+    public static boolean ifScannerHasNext(){
         return scanner.hasNextLine();
     }
 
@@ -64,7 +64,7 @@ public class Console {
     public static void printtable(Object element1, Object element2) {
         System.out.printf("%-37s%-1s%n", element1, element2);
     }
-    public void exit(){
+    public static void exit(){
         System.exit(0);
     }
 }
