@@ -6,9 +6,8 @@ import data.Dragon;
 
 import java.io.*;
 import java.lang.reflect.Type;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
+
 
 public class FileManager {
     private Gson gson = new Gson();
@@ -20,15 +19,22 @@ public class FileManager {
 
     public ArrayDeque<Dragon> readCollection() {
         if (System.getenv().get(envVariable) != null) {
+//            File file = ;
             try (Scanner collectionFileScanner = new Scanner(new File(System.getenv().get(envVariable)))) {
                 ArrayDeque<Dragon> collection;
                 Type collectionType = new TypeToken<ArrayDeque<Dragon>>() {
                 }.getType();
                 collection = gson.fromJson(collectionFileScanner.nextLine().trim(), collectionType);
+                ArrayDeque<Dragon> dragons = collection;
+                for (Dragon dragon: dragons) CollectionDragons.getArrayForId().add(dragon.getId());
                 Console.println("Коллекция успешна загружена!");
                 return collection;
             } catch (FileNotFoundException e) {
+                Console.printerror("File not found");
                 throw new RuntimeException(e);
+            }catch (NoSuchElementException exception){
+                Console.printerror("No such element in collection");
+                throw new RuntimeException(exception);
             }
         }else return null;
     }
@@ -42,27 +48,4 @@ public class FileManager {
             }
         } else Console.printerror("Системная переменная с загрузочным файлом не найдена!");
     }
-//    public static ArrayDeque<Dragon> fileReader () throws IOException {
-//        Gson gson = new Gson();
-//        File collection = new File("collection.json");
-//        if (collection.canRead()) {
-//
-//            Reader reader = Files.newBufferedReader(Paths.get(String.valueOf(collection)));
-//
-//            // convert JSON array to list of dragons
-//            List<Dragon> dragonsFromFile = Arrays.asList(gson.fromJson(reader, Dragon[].class));
-//            ArrayDeque<Dragon> dragons = new ArrayDeque<>(dragonsFromFile);
-//
-//            // close reader
-//            reader.close();
-//            ArrayList<Long> arrayList = new ArrayList<>();
-//            for (Dragon dragon : dragons) {
-//                arrayList.add(dragon.getId());
-//            }
-//            Dragon.setArrayList(arrayList);
-//            return dragons;
-//        } else {
-//            return null;
-//        }
-//    }
 }

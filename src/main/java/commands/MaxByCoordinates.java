@@ -2,12 +2,9 @@ package commands;
 
 import Collection.CollectionDragons;
 import Collection.Console;
-import data.Coordinates;
 import data.Dragon;
 import exception.WrongAmountCommandsException;
-
 import java.util.Iterator;
-import java.util.Scanner;
 
 public class MaxByCoordinates implements Command{
 

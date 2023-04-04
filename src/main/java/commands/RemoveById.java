@@ -7,7 +7,6 @@ import exception.WrongAmountCommandsException;
 
 import java.util.Iterator;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class RemoveById implements Command{
     private CollectionDragons collectionDragons;

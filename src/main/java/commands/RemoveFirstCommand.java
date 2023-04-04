@@ -4,8 +4,6 @@ import Collection.CollectionDragons;
 import Collection.Console;
 import exception.WrongAmountCommandsException;
 
-import java.util.Iterator;
-
 public class RemoveFirstCommand implements Command {
     private CollectionDragons collectionDragons;
     public RemoveFirstCommand(){}

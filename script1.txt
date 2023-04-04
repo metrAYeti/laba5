@@ -1,2 +1,4 @@
 help
-execute_script
+info
+show
+execute_script script.txt

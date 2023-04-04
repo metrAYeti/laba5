@@ -5,11 +5,7 @@ import Collection.Console;
 import Collection.FileManager;
 import exception.WrongAmountCommandsException;
 
-import javax.xml.stream.XMLStreamException;
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
-
-public class SaveCommand implements Command{
+public class   SaveCommand implements Command{
     private FileManager fileManager;
     private CollectionDragons collectionDragons;
     public SaveCommand(CollectionDragons collectionDragons, FileManager reader){

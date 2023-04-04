@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class Dragon implements Comparable<Dragon> {
     private static ArrayList<Long> arrayList = new ArrayList<>();
-    private static long idishnik = 0;
 
     public void setId(Long id) {
         this.id = id;
@@ -129,17 +128,17 @@ public class Dragon implements Comparable<Dragon> {
 
     @Override
     public String toString() {
-        return "Dragon{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "------------Dragon------------" + '\n' +
+                "id = " + id + '\n' +
+                "name = '" + name + '\'' + '\n' +
                 //", creationDate=" + creationDate.toLocalDate() + " " + creationDate.toLocalTime() +
-                ", coordinates=" + coordinates +
-                ", age=" + age +
-                ", wingspan=" + wingspan +
-                ", weight=" + weight +
-                ", character=" + character +
-                ", head=" + head + '\n' +
-                '}';
+                "coordinates = " + coordinates + '\n' +
+                "age = " + age + '\n' +
+                "wingspan = " + wingspan +'\n' +
+                "weight = " + weight +'\n' +
+                "character = " + character +'\n' +
+                "head = " + head + '\n' +
+                "------------------------------" + '\n';
     }
 
 

@@ -4,16 +4,8 @@ import Collection.Asker;
 import Collection.Console;
 import exception.*;
 import Collection.CollectionDragons;
-import data.Coordinates;
 import data.Dragon;
-import data.DragonCharacter;
-import data.DragonHead;
-import exception.WrongAmountOfElementsException;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 public class AddElement implements Command {
     private Asker askerOrganizations;

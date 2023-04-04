@@ -8,9 +8,6 @@ public class Coordinates {
         this.x = x;
         this.y = y;
     }
-    public Coordinates() {
-
-    }
 
     public Double getX() {
         return x;
@@ -32,8 +29,7 @@ public class Coordinates {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (obj instanceof Coordinates) {
-            Coordinates coordinatesObj = (Coordinates) obj;
+        if (obj instanceof Coordinates coordinatesObj) {
             return (x.equals(coordinatesObj.getX())) && y.equals(coordinatesObj.getY());
         }
         return false;

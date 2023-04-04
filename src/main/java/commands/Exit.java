@@ -2,9 +2,12 @@ package commands;
 
 import Collection.CollectionDragons;
 import Collection.Console;
+import Collection.FileManager;
 import exception.WrongAmountCommandsException;
 
 public class Exit implements Command {
+    FileManager fileManager = new FileManager("Lab5");
+    CollectionDragons collectionDragons;
     public Exit() {
 
     }

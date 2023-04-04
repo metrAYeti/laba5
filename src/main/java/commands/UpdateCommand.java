@@ -4,7 +4,6 @@ import Collection.CollectionDragons;
 import Collection.Console;
 import data.Dragon;
 import exception.WrongAmountCommandsException;
-
 import java.util.*;
 
 public class UpdateCommand implements Command {

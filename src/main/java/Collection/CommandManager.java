@@ -5,7 +5,6 @@ import exception.WrongValuesException;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 import java.util.ArrayList;
 
 public class CommandManager {
@@ -28,11 +27,11 @@ public class CommandManager {
         commandsMap.put("print_field_descending_head", new PrintFieldDescendingHead(collectionManager));
         commandsMap.put("add", new AddElement(collectionManager));
         commandsMap.put("add_if_max", new AddIfMax(collectionManager));
-//        commandsMap.put("execute_script", new ExecuteScriptCommand(collectionManager, saveFileNameForExecute, reader));
+        commandsMap.put("execute_script", new ScriptCommand(collectionManager, saveFileNameForExecute, reader));
         commandsMap.put("save", new SaveCommand(collectionManager, reader));
         commandsMap.put("exit", new Exit());
     }
-//
+
     public CommandManager() {
         commandsListForHelp = new ArrayList<>();
         commandsListForHelp.add(new ClearCommand());
@@ -47,7 +46,7 @@ public class CommandManager {
         commandsListForHelp.add(new PrintFieldDescendingHead());
         commandsListForHelp.add(new AddElement());
         commandsListForHelp.add(new AddIfMax());
-//        commandsListForHelp.add(new ExecuteScriptCommand());
+        commandsListForHelp.add(new ScriptCommand());
         commandsListForHelp.add(new SaveCommand());
         commandsListForHelp.add(new Exit());
     }
@@ -90,7 +89,7 @@ public class CommandManager {
         commandsMap.put("print_field_descending_head", new PrintFieldDescendingHead(collectionManager));
         commandsMap.put("add", new AddElement(collectionManager));
         commandsMap.put("add_if_max", new AddIfMax(collectionManager));
-//        commandsMap.put("execute_script", new ExecuteScriptCommand(collectionManager, saveFileNameForExecute, reader));
+        commandsMap.put("execute_script", new ScriptCommand(collectionManager, saveFileNameForExecute, reader));
         commandsMap.put("save", new SaveCommand(collectionManager, reader));
         commandsMap.put("exit", new Exit());
         return commandsMap;

@@ -2,10 +2,7 @@ package commands;
 
 import Collection.*;
 import data.Dragon;
-
-import java.util.Scanner;
 import java.util.Iterator;
-import java.util.*;
 
 public class RemoveGreaterCommand implements Command{
     private CollectionDragons collectionDragons;

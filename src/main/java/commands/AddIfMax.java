@@ -5,9 +5,7 @@ import Collection.CollectionDragons;
 import Collection.Console;
 import data.Dragon;
 import exception.WrongAmountCommandsException;
-
 import java.util.Iterator;
-import java.util.Scanner;
 
 public class AddIfMax implements Command{
 

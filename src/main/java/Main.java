@@ -11,8 +11,6 @@ public class Main {
         final String envVariable = "lab5";
         FileManager fileManager = new FileManager(envVariable);
         CollectionDragons collectionDragons = new CollectionDragons(fileManager);
-        //CollectionDragons.getDragons();
-//        new CommandProcessing().switchCommands();
         List<String> saveFileNameForExecute = new ArrayList<>();
         CommandManager commandsProcessing = new CommandManager(collectionDragons,fileManager,saveFileNameForExecute);
         commandsProcessing.commandManager();
