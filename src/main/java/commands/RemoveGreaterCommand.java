@@ -1,27 +1,53 @@
 package commands;
 
-import Collection.CollectionDragons;
+import Collection.*;
 import data.Dragon;
 
 import java.util.Scanner;
 import java.util.Iterator;
 import java.util.*;
 
-public class RemoveGreaterCommand {
+public class RemoveGreaterCommand implements Command{
+    private CollectionDragons collectionDragons;
+    public RemoveGreaterCommand(){}
+    public RemoveGreaterCommand(CollectionDragons dragon){
+        this.collectionDragons = dragon;
+    }
 
-    public void removeGreater() {
-        Deque<Dragon> copy_dragons = new ArrayDeque<>();
-        System.out.println("Введите значение weight");
-        Scanner scanner = new Scanner(System.in);
-        double weight = scanner.nextDouble();
-        for (Dragon drag : CollectionDragons.getDragons()) {
-            if (weight >= drag.getWeight()) copy_dragons.add(drag);
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public String getDescription() {
+        return null;
+    }
+
+    @Override
+    public void execute(String argument) {
+        try {
+            if (collectionDragons.getCollectionSize() > 0) {
+                double weight = Double.parseDouble(argument);
+                int s = collectionDragons.getCollectionSize();
+                Iterator<Dragon> iter = collectionDragons.getIterator();
+                while (iter.hasNext()) {
+                    Dragon i = iter.next();
+                    if (i.getWeight() > weight) {
+                        iter.remove();
+                    }
+                }
+                if (collectionDragons.getCollectionSize() < s) {
+                    Console.println("Element(s) successfully removed(s)");
+                } else {
+                    Console.println("All elements do not exceed the specified");
+                }
+            } else {
+                Console.println("There are no elements in the collection");
+            }
+        }catch(NumberFormatException ex) {
+            Console.println("annualTurnover must be represented by a float number, enter the correct value");
         }
-        CollectionDragons.getDragons().clear();
-        for(Dragon dragon: copy_dragons){
-            CollectionDragons.getDragons().add(dragon);
-        }
-        System.out.println(CollectionDragons.getDragons());
     }
 }
 

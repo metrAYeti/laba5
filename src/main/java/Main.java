@@ -1,8 +1,10 @@
 import Collection.CollectionDragons;
+import Collection.CommandManager;
 import Collection.FileManager;
-import commands.CommandProcessing;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -10,6 +12,9 @@ public class Main {
         FileManager fileManager = new FileManager(envVariable);
         CollectionDragons collectionDragons = new CollectionDragons(fileManager);
         //CollectionDragons.getDragons();
-        new CommandProcessing().switchCommands();
+//        new CommandProcessing().switchCommands();
+        List<String> saveFileNameForExecute = new ArrayList<>();
+        CommandManager commandsProcessing = new CommandManager(collectionDragons,fileManager,saveFileNameForExecute);
+        commandsProcessing.commandManager();
     }
 }

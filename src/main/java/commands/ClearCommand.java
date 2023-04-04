@@ -2,11 +2,14 @@ package commands;
 
 import Collection.CollectionDragons;
 import Collection.Console;
+import data.Dragon;
 import exception.WrongAmountCommandsException;
 
 public class ClearCommand implements Command {
-    public void clear() {
-        CollectionDragons.getDragons().clear();
+    private CollectionDragons dragon;
+    public ClearCommand(){}
+    public ClearCommand(CollectionDragons dragon){
+        this.dragon = dragon;
     }
 
     @Override
@@ -22,9 +25,9 @@ public class ClearCommand implements Command {
     @Override
     public void execute(String argument) {
         try {
-            if(CollectionDragons.getDragons().size()!=0) {
+            if(dragon.getCollectionSize()!=0) {
                 if (!argument.isEmpty() && !argument.equals(getName())) throw new WrongAmountCommandsException();
-                CollectionDragons.getDragons().clear();
+                dragon.clear();
                 Console.println("Collection сleared");
             }else{
                 Console.println("There are no elements in the collection");

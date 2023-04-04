@@ -2,38 +2,37 @@ package commands;
 
 import Collection.CollectionDragons;
 import Collection.Console;
+import Collection.FileManager;
 import exception.WrongAmountCommandsException;
 
-public class InfoCommand implements Command{
+import javax.xml.stream.XMLStreamException;
+import javax.xml.transform.TransformerException;
+import java.io.IOException;
+
+public class SaveCommand implements Command{
+    private FileManager fileManager;
     private CollectionDragons collectionDragons;
-    public InfoCommand(){}
-    public InfoCommand(CollectionDragons collectionDragons) {
+    public SaveCommand(CollectionDragons collectionDragons, FileManager reader){
+        this.fileManager = new FileManager("lab5");
         this.collectionDragons = collectionDragons;
     }
-
-    public void info() {
-        System.out.println(collectionDragons.info());
-    }
+    public SaveCommand(){}
 
     @Override
     public String getName() {
-        return "info";
+        return "save";
     }
 
     @Override
     public String getDescription() {
-        return "information about collection";
+        return "saving file";
     }
 
     @Override
     public void execute(String argument) {
-        try {
+        try{
             if(!argument.isEmpty() && !argument.equals(getName())) throw new WrongAmountCommandsException();
-            Console.println("Type of collection: Organization");
-            Console.println("Count elements in collection: " + collectionDragons.getCollectionSize());
-            if (collectionDragons.getCollectionSize() != 0) {
-                Console.println("Inicialization date: " + collectionDragons.getFirstElement());
-            }
+            fileManager.writeCollection(collectionDragons.getDragons());
         }catch (WrongAmountCommandsException ex){
             Console.println("incorrect command usage, usage example: " + getName());
         }
