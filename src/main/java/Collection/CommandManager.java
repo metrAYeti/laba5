@@ -3,6 +3,7 @@ package Collection;
 import commands.*;
 import exception.WrongValuesException;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class CommandManager {
         commandsMap.put("add_if_max", new AddIfMax(collectionManager));
         commandsMap.put("execute_script", new ScriptCommand(collectionManager, saveFileNameForExecute, reader));
         commandsMap.put("save", new SaveCommand(collectionManager, reader));
-        commandsMap.put("exit", new Exit());
+        commandsMap.put("exit", new Exit(collectionManager, reader));
     }
 
     public CommandManager() {
@@ -68,6 +69,8 @@ public class CommandManager {
             } catch (WrongValuesException ex) {
                 Console.println(ex.getMessage());
                 Console.print("enter command: ");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
     }
@@ -91,7 +94,7 @@ public class CommandManager {
         commandsMap.put("add_if_max", new AddIfMax(collectionManager));
         commandsMap.put("execute_script", new ScriptCommand(collectionManager, saveFileNameForExecute, reader));
         commandsMap.put("save", new SaveCommand(collectionManager, reader));
-        commandsMap.put("exit", new Exit());
+        commandsMap.put("exit", new Exit(collectionManager, reader));
         return commandsMap;
     }
 }

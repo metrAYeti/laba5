@@ -1,6 +1,8 @@
 package data;
 
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Dragon implements Comparable<Dragon> {
@@ -22,9 +24,9 @@ public class Dragon implements Comparable<Dragon> {
         this.coordinates = coordinates;
     }
 
-  /*  public void setCreationDate(LocalDateTime creationDate) {
+   public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
-    }*/
+    }
 
     public void setAge(int age) {
         this.age = age;
@@ -49,19 +51,19 @@ public class Dragon implements Comparable<Dragon> {
     private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
-    //private java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    public java.time.LocalDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private int age; //Значение поля должно быть больше 0
     private Integer wingspan; //Значение поля должно быть больше 0, Поле может быть null
     private long weight; //Значение поля должно быть больше 0
     private DragonCharacter character; //Поле не может быть null
     private DragonHead head;
-
-    public Dragon(Long id, String name, Coordinates coordinates, int age, Integer wingspan,
+//    LocalDate creationDate
+    public Dragon(Long id, String name, Coordinates coordinates,LocalDate creationDate, int age, Integer wingspan,
                   long weight, DragonCharacter character, DragonHead head) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
-        // this.creationDate = creationDate;
+//        this.creationDate = creationDate;
         this.age = age;
         this.wingspan = wingspan;
         this.weight = weight;
@@ -89,9 +91,9 @@ public class Dragon implements Comparable<Dragon> {
         return coordinates;
     }
 
-    /*public LocalDateTime getCreationDate() {
-        return creationDate;
-    }*/
+//    public LocalDate getCreationDate() {
+//        return creationDate;
+//    }
 
     public int getAge() {
         return age;
@@ -131,7 +133,7 @@ public class Dragon implements Comparable<Dragon> {
         return "------------Dragon------------" + '\n' +
                 "id = " + id + '\n' +
                 "name = '" + name + '\'' + '\n' +
-                //", creationDate=" + creationDate.toLocalDate() + " " + creationDate.toLocalTime() +
+                "creationDate=" + creationDate.toLocalDate() + " " + creationDate.toLocalTime()  + '\n' +
                 "coordinates = " + coordinates + '\n' +
                 "age = " + age + '\n' +
                 "wingspan = " + wingspan +'\n' +

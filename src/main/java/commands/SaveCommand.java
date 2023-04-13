@@ -5,11 +5,11 @@ import Collection.Console;
 import Collection.FileManager;
 import exception.WrongAmountCommandsException;
 
-public class   SaveCommand implements Command{
+public class SaveCommand implements Command{
     private FileManager fileManager;
     private CollectionDragons collectionDragons;
-    public SaveCommand(CollectionDragons collectionDragons, FileManager reader){
-        this.fileManager = new FileManager("lab5");
+    public SaveCommand(CollectionDragons collectionDragons, FileManager fileManager){
+        this.fileManager = fileManager;
         this.collectionDragons = collectionDragons;
     }
     public SaveCommand(){}
@@ -28,7 +28,8 @@ public class   SaveCommand implements Command{
     public void execute(String argument) {
         try{
             if(!argument.isEmpty() && !argument.equals(getName())) throw new WrongAmountCommandsException();
-            fileManager.writeCollection(collectionDragons.getDragons());
+            fileManager.writeCollection(collectionDragons.getDragons(), "dragons.json");
+//            collectionDragons.saveCollection();
         }catch (WrongAmountCommandsException ex){
             Console.println("incorrect command usage, usage example: " + getName());
         }

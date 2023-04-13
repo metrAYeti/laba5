@@ -16,6 +16,7 @@ public class CollectionDragons {
         return arrayForId;
     }
 
+
     public LocalDateTime getLastInitTime() {
         return lastInitTime;
     }
@@ -30,7 +31,7 @@ public class CollectionDragons {
     }
 
     public void saveCollection() {
-        fileManager.writeCollection(dragons);
+        fileManager.writeCollection(dragons, null);
         lastSaveTime = LocalDateTime.now();
     }
 

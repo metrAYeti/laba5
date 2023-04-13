@@ -91,6 +91,8 @@ public class ScriptCommand implements Command {
             Console.printerror("recursion detected while executing command");
             saveFileNameForExecute.clear();
             throw new RuntimeException(ex);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
     }

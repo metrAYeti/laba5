@@ -6,6 +6,9 @@ import exception.*;
 import Collection.CollectionDragons;
 import data.Dragon;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 
 public class AddElement implements Command {
     private Asker askerOrganizations;
@@ -42,6 +45,7 @@ public class AddElement implements Command {
             organization.setId(CollectionDragons.generate_id());
             organization.setName(askerOrganizations.askName());
             organization.setCoordinates(askerOrganizations.setCoordinates());
+            organization.setCreationDate(LocalDateTime.now());
             organization.setWeight(askerOrganizations.askWeight());
             organization.setCharacter(askerOrganizations.askCharacter());
             organization.setAge(askerOrganizations.askAge());

@@ -146,7 +146,7 @@ public class Asker {
             } catch (NumberFormatException ex) {
                 Console.println("number must be int");
             } catch (NotInDeclaredLimitsException ex) {
-                Console.println("enter again, input incorrect (choose int num from 1 to 5)");
+                Console.println("enter again, input incorrect (choose int num from 1 to 3)");
             }
         }
     }
@@ -160,7 +160,7 @@ public class Asker {
                 size = Long.parseLong(Console.readString());
                 break;
             } catch (NumberFormatException ex) {
-                Console.println("age coordinate must be int type");
+                Console.println("size must be long type");
             }
         }
         return size;
