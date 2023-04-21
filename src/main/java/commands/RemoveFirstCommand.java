@@ -19,7 +19,7 @@ public class RemoveFirstCommand implements Command {
 
     @Override
     public String getDescription() {
-        return null;
+        return "remove_first element";
     }
 
     @Override

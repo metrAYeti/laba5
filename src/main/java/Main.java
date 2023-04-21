@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException { 
         System.out.println("What file you want open?" + "\n" + "1.AutoSaveFile" +"\n" + "2.NotAutoSaveFile");
         Scanner in = new Scanner(System.in);
         int num = in.nextInt();

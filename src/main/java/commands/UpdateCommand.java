@@ -15,12 +15,12 @@ public class UpdateCommand implements Command {
 
     @Override
     public String getName() {
-        return null;
+        return "update command";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "update command";
     }
 
     @Override

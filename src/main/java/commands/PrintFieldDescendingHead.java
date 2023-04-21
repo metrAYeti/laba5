@@ -33,7 +33,7 @@ public class PrintFieldDescendingHead implements Command {
 
     @Override
     public String getDescription() {
-        return null;
+        return "print_field_descending_head";
     }
 
     @Override

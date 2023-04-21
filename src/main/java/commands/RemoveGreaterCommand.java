@@ -13,12 +13,12 @@ public class RemoveGreaterCommand implements Command{
 
     @Override
     public String getName() {
-        return null;
+        return "remove greater";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "remove greater";
     }
 
     @Override
