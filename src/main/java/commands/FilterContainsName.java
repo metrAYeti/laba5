@@ -4,7 +4,6 @@ import Collection.CollectionDragons;
 import data.Dragon;
 
 import java.util.Iterator;
-import java.util.Scanner;
 
 public class FilterContainsName implements Command {
     private CollectionDragons collectionDragons;

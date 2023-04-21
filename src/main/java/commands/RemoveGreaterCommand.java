@@ -2,10 +2,7 @@ package commands;
 
 import Collection.*;
 import data.Dragon;
-
-import java.util.Scanner;
 import java.util.Iterator;
-import java.util.*;
 
 public class RemoveGreaterCommand implements Command{
     private CollectionDragons collectionDragons;
@@ -16,12 +13,12 @@ public class RemoveGreaterCommand implements Command{
 
     @Override
     public String getName() {
-        return null;
+        return "remove greater";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "remove greater";
     }
 
     @Override

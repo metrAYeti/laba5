@@ -11,10 +11,6 @@ public class InfoCommand implements Command{
         this.collectionDragons = collectionDragons;
     }
 
-    public void info() {
-        System.out.println(collectionDragons.info());
-    }
-
     @Override
     public String getName() {
         return "info";
@@ -29,10 +25,10 @@ public class InfoCommand implements Command{
     public void execute(String argument) {
         try {
             if(!argument.isEmpty() && !argument.equals(getName())) throw new WrongAmountCommandsException();
-            Console.println("Type of collection: Organization");
+            Console.println("Type of collection: Dragons");
             Console.println("Count elements in collection: " + collectionDragons.getCollectionSize());
             if (collectionDragons.getCollectionSize() != 0) {
-                Console.println("Inicialization date: " + collectionDragons.getFirstElement());
+                Console.println("Inicialization date: " + collectionDragons.getLastInitTime());
             }
         }catch (WrongAmountCommandsException ex){
             Console.println("incorrect command usage, usage example: " + getName());

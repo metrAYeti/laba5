@@ -2,7 +2,6 @@ package commands;
 
 import Collection.CollectionDragons;
 import Collection.Console;
-import data.Dragon;
 import exception.WrongAmountCommandsException;
 
 public class ClearCommand implements Command {

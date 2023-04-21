@@ -1,6 +1,5 @@
 package Collection;
 
-import com.fasterxml.jackson.core.sym.NameN;
 import data.Coordinates;
 import data.DragonCharacter;
 import data.DragonHead;
@@ -9,15 +8,8 @@ import exception.MustNotBeEmptyException;
 import exception.NotInDeclaredLimitsException;
 
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 public class Asker {
-    private final int MAX_Y = 262;
-    private final double MIN_HEALTH = 0;
-    private final long MIN_MARINES = 1;
-    private final long MAX_MARINES = 1000;
-
-    private Scanner userScanner;
 
     public Asker() {
     }
@@ -154,7 +146,7 @@ public class Asker {
             } catch (NumberFormatException ex) {
                 Console.println("number must be int");
             } catch (NotInDeclaredLimitsException ex) {
-                Console.println("enter again, input incorrect (choose int num from 1 to 5)");
+                Console.println("enter again, input incorrect (choose int num from 1 to 3)");
             }
         }
     }
@@ -168,7 +160,7 @@ public class Asker {
                 size = Long.parseLong(Console.readString());
                 break;
             } catch (NumberFormatException ex) {
-                Console.println("age coordinate must be int type");
+                Console.println("size must be long type");
             }
         }
         return size;
@@ -211,7 +203,4 @@ public class Asker {
         return new DragonHead(size, eyesCount, toothCount);
     }
 
-
-//    (, , , , ,
-//, , DragonHead Long size, double eyesCount, Float toothCount)
 }

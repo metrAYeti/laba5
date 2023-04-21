@@ -7,7 +7,6 @@ import exception.WrongAmountCommandsException;
 
 import java.util.Iterator;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class RemoveById implements Command{
     private CollectionDragons collectionDragons;
@@ -19,12 +18,12 @@ public class RemoveById implements Command{
 
     @Override
     public String getName() {
-        return null;
+        return "remove_by_id";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "remove_by_id";
     }
 
     @Override

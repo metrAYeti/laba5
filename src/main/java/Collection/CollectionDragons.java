@@ -1,23 +1,25 @@
 package Collection;
 
-import com.google.gson.Gson;
 import data.Dragon;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
 
 public class CollectionDragons {
 
-    private static ArrayList<Long> arrayList = new ArrayList<>();
-    private ArrayDeque<Dragon> dragons = new ArrayDeque<>();
+    private static ArrayList<Long> arrayForId = new ArrayList<>();
+    private ArrayDeque<Dragon> dragons;
     private LocalDateTime lastInitTime;
     private LocalDateTime lastSaveTime;
     private FileManager fileManager;
+
+    public static ArrayList<Long> getArrayForId() {
+        return arrayForId;
+    }
+
+
+    public LocalDateTime getLastInitTime() {
+        return lastInitTime;
+    }
 
     public Deque<Dragon> getDragons() {
         return dragons;
@@ -29,7 +31,7 @@ public class CollectionDragons {
     }
 
     public void saveCollection() {
-        fileManager.writeCollection(dragons);
+        fileManager.writeCollection(dragons, null);
         lastSaveTime = LocalDateTime.now();
     }
 
@@ -53,7 +55,8 @@ public class CollectionDragons {
     }
 
     public void show() {
-        Console.println("Dragons collection: \n" + dragons);
+        Console.println("Dragons collection: \n");
+        for (Dragon dragon: dragons) {Console.println(dragon);}
     }
 
     public Dragon getById(Long id) {
@@ -67,18 +70,12 @@ public class CollectionDragons {
         dragons.add(dragon);
     }
 
-
-    public String info() {
-        int size = dragons.size();
-        String result = "Размер коллекции: " + size + '\n' + "Тип коллекции: ArrayDeque" + '\n' + "Дата инициализации: " + LocalDateTime.now();
-        return result;
-    }
     public static Long generate_id() {
         Long id;
         while (true) {
             id = (long) (1L + (Math.random() * (10000L)));
-            if (!arrayList.contains(id)) {
-                arrayList.add(id);
+            if (!arrayForId.contains(id)) {
+                arrayForId.add(id);
                 return id;
             }
         }

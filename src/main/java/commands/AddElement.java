@@ -4,16 +4,11 @@ import Collection.Asker;
 import Collection.Console;
 import exception.*;
 import Collection.CollectionDragons;
-import data.Coordinates;
 import data.Dragon;
-import data.DragonCharacter;
-import data.DragonHead;
-import exception.WrongAmountOfElementsException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+
 
 public class AddElement implements Command {
     private Asker askerOrganizations;
@@ -50,6 +45,7 @@ public class AddElement implements Command {
             organization.setId(CollectionDragons.generate_id());
             organization.setName(askerOrganizations.askName());
             organization.setCoordinates(askerOrganizations.setCoordinates());
+            organization.setCreationDate(LocalDateTime.now());
             organization.setWeight(askerOrganizations.askWeight());
             organization.setCharacter(askerOrganizations.askCharacter());
             organization.setAge(askerOrganizations.askAge());

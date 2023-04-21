@@ -5,10 +5,8 @@ import Collection.Console;
 import data.Dragon;
 import data.DragonHead;
 import exception.WrongAmountCommandsException;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 public class PrintFieldDescendingHead implements Command {
@@ -35,7 +33,7 @@ public class PrintFieldDescendingHead implements Command {
 
     @Override
     public String getDescription() {
-        return null;
+        return "print_field_descending_head";
     }
 
     @Override

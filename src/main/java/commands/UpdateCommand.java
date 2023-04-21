@@ -4,7 +4,6 @@ import Collection.CollectionDragons;
 import Collection.Console;
 import data.Dragon;
 import exception.WrongAmountCommandsException;
-
 import java.util.*;
 
 public class UpdateCommand implements Command {
@@ -16,12 +15,12 @@ public class UpdateCommand implements Command {
 
     @Override
     public String getName() {
-        return null;
+        return "update command";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "update command";
     }
 
     @Override

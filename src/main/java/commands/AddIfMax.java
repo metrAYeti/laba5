@@ -6,8 +6,8 @@ import Collection.Console;
 import data.Dragon;
 import exception.WrongAmountCommandsException;
 
+import java.time.LocalDateTime;
 import java.util.Iterator;
-import java.util.Scanner;
 
 public class AddIfMax implements Command{
 
@@ -38,6 +38,7 @@ public class AddIfMax implements Command{
             organization.setId(CollectionDragons.generate_id());
             organization.setName(askerOrganizations.askName());
             organization.setCoordinates(askerOrganizations.setCoordinates());
+            organization.setCreationDate(LocalDateTime.now());
             organization.setWeight(askerOrganizations.askWeight());
             organization.setCharacter(askerOrganizations.askCharacter());
             organization.setAge(askerOrganizations.askAge());

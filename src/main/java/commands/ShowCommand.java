@@ -2,6 +2,7 @@ package commands;
 
 import Collection.CollectionDragons;
 import Collection.Console;
+import exception.NotElementOfCollection;
 import exception.WrongAmountCommandsException;
 
 public class ShowCommand implements Command{
@@ -26,8 +27,11 @@ public class ShowCommand implements Command{
         try {
             if (!argument.isEmpty() && !argument.equals(getName())) throw new WrongAmountCommandsException();
             collectionDragons.show();
+            if (collectionDragons.getCollectionSize() < 1) throw new NotElementOfCollection();
         } catch (WrongAmountCommandsException ex) {
-            Console.println("incorrect command usage, usage example: " + getName());
+            Console.printerror("incorrect command usage, usage example: " + getName());
+        }catch (NotElementOfCollection e) {
+            Console.printerror("Collection is empty");
         }
 
     }
