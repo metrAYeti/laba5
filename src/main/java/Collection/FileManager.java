@@ -61,7 +61,8 @@ public class FileManager {
 
 
     public void writeCollection(Collection<?> collection, String name) {
-        if (name!=null) {
+        File file = new File(name);
+        if (name!=null && file.canWrite() ) {
             try (FileWriter collectionFileWrit = new FileWriter(name)){
                 collectionFileWrit.write(gson.toJson(collection));
             }catch (IOException exception) {
